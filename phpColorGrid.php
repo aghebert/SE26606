@@ -11,7 +11,7 @@
 $table = "<table>\n"; //empty table var
 for ($rows =1; $rows <= 10; $rows++) {
     $table .= "\t<tr>";
-    for ($cols = 1; $cols <= 5; $cols++){
+    for ($cols = 1; $cols <= 10; $cols++){
         $tempHex = genRanHex();
         //this adds the color to the table, and shows the hex value
         $table .= "<td style='background-color:$tempHex;color:black'> $tempHex <br /> <span style='color:white'>$tempHex </span> </td>";
@@ -28,7 +28,7 @@ return $randColor;
 
 }
 
-//This generates a six character 
+//This generates a six character hex color value
 function genRanHex(){
     $ranHex = "#";
    $ranHex .= getRandColor();
