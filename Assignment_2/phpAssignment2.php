@@ -11,13 +11,13 @@ $username = "root";
 try{
     $db = new PDO($dsn, $username);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $submit = $_POST['submit'] ?? "";
+    $submit = $_GET['submit'] ?? "";
     if ($submit == "Do it"){
-        $id = $_POST['id'] ?? "";
-        $firstname = $_POST['firstname'] ?? "";
-        $lastname = $_POST['lastname'] ?? "";
-        $dob = $_POST['dob'] ?? "";
-        $height = $_POST['height'] ?? "";
+        $id = $_GET['id'] ?? "";
+        $firstname = $_GET['firstname'] ?? "";
+        $lastname = $_GET['lastname'] ?? "";
+        $dob = $_GET['dob'] ?? "";
+        $height = $_GET['height'] ?? "";
 
         $sql = $db->prepare("INSERT INTO actors VALUES (null, :firstname, :lastname, :dob, :height)");
         $sql->bindParam(':firstname', $firstname);
@@ -36,7 +36,7 @@ try{
 
 ?>
 
-<form method="POST" action="#">
+<form method="GET" action="#">
     <input type="text" name="firstname" value="" /><br />
     <input type="text" name="lastname" value="" /><br />
     <input type="text" name="dob" value="" /><br />
