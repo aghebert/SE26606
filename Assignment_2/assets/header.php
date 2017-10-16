@@ -13,8 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!-- css links go here-->
-    <!-- javascript links go here -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <nav></nav>
 </head>
 <body>
