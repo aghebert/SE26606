@@ -53,4 +53,13 @@ function addActor($db, $firstname, $lastname, $dob, $height){
     }
 }
 
+function getActor($db, $id){
+    $sql = $db->prepare("SELECT * FROM actors WHERE id = :id");
+    $sql->bindParam(':id', $id, PDO::PARAM_INT);
+    $sql->execute();
+    $row = $sql->fetch(PDO::FETCH_ASSOC);
+    return $row;
+
+}
+
 ?>

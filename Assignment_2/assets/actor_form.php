@@ -9,10 +9,10 @@ $currentDay = date('Y\-m\-d');
 
 ?>
 
-<form method="GET" action="#">
-    First Name: <input type="text" name="firstname" value="" align="right"/> <br />
+<form  method="POST" action="#">
+    First Name: <input type="text" name="firstname" value=""/> <br />
     Last Name: <input type="text" name="lastname" value="" /> <br />
-    Date of Birth: <input type="date" name="dob" value="" min=<?=$currentDay ?> /> <br />
+    Date of Birth: <input type="text" name="dob" value=""/> <br />
     Height: <input type="text" name="height" value="" /> <br />
-    <input type="submit" id="submitactors" name="submit" value="Add" />
+    <input type="submit" id="submitactors" name="action" value="Add" />
 </form>
