@@ -10,8 +10,11 @@ $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) ?? "";
 $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING) ?? "";
 $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING) ?? "";
 $dob = filter_input(INPUT_POST, 'dob', FILTER_SANITIZE_STRING) ?? "";
-$height = filter_input(INPUT_POST, 'height', FILTER_SANITIZE_STRING) ?? "";
-
+$height = filter_input(INPUT_POST, 'height', FILTER_VALIDATE_REGEXP,
+        array(
+            "options"=>array("regexp"=>'/^\(\d{1,2}\)[\']?\(\(\d\) | \([0 - 1][0 - 2]\)\) ? [\"]?$/')
+        )
+    ) ?? "";
 switch ($action) {
     case "Add":
         addActor($db, $firstname, $lastname, $dob, $height);
