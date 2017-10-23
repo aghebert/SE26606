@@ -13,20 +13,20 @@ function getCorporationsAsTable($db)
         $sql->execute();
 
         $corps = $sql->fetchAll(PDO::FETCH_ASSOC);
-if($sql->rowCount() > 0) {
-    $table = "<table class='table'>" . PHP_EOL;
-    foreach ($corps as $corpor) {
-        $table .= "<tr><td>";
-        $table .= $corpor['corp'];
-        $table .= "</td><td><form action='#' method='post'><input type='hidden' name='id' value='". $corpor['id'] ."' /><input type='submit' name='action' value='Read' /> </form>";
-        $table .= "</td><td><form action='#' method='post'><input type='hidden' name='id' value='". $corpor['id'] ."' /><input type='submit' name='action' value='Update' /> </form>";
-        $table .= "</td><td><form action='#' method='post'><input type='hidden' name='id' value='". $corpor['id'] ."' /><input type='submit' name='action' value='Delete' /> </form>";
-        $table .= "</td></tr>";
-    }
-    $table .= "</table>" . PHP_EOL;
-}else{
-    $table = "There are no corporations in the DB" . PHP_EOL;
-}
+        if ($sql->rowCount() > 0) {
+            $table = "<table class='table'>" . PHP_EOL;
+            foreach ($corps as $corpor) {
+                $table .= "<tr><td>";
+                $table .= $corpor['corp'];
+                $table .= "</td><td><form action='#' method='post'><input type='hidden' name='id' value='" . $corpor['id'] . "' /><input type='submit' name='action' value='Read' /> </form>";
+                $table .= "</td><td><form action='#' method='post'><input type='hidden' name='id' value='" . $corpor['id'] . "' /><input type='submit' name='action' value='Update' /> </form>";
+                $table .= "</td><td><form action='#' method='post'><input type='hidden' name='id' value='" . $corpor['id'] . "' /><input type='submit' name='action' value='Delete' /> </form>";
+                $table .= "</td></tr>";
+            }
+            $table .= "</table>" . PHP_EOL;
+        } else {
+            $table = "There are no corporations in the DB" . PHP_EOL;
+        }
         return $table;
 
 
@@ -35,7 +35,8 @@ if($sql->rowCount() > 0) {
     }
 }
 
-function addCorporation($db, $firstname, $lastname, $dob, $height){
+function addCorporation($db, $firstname, $lastname, $dob, $height)
+{
     try {
         $sql = $db->prepare("INSERT INTO corps VALUES (null, :corp, :incorp_dt, :email, :zipcode, :owner, :phone)");
         $sql->bindParam(':corp', $corp);
@@ -47,18 +48,33 @@ function addCorporation($db, $firstname, $lastname, $dob, $height){
 
         $sql->execute();
         return $sql->rowCount();
-    } catch (PDOException $e){
+    } catch (PDOException $e) {
         die("There was a problem adding this corporation");
     }
 }
 
-function getCorporation($db, $id){
+function getCorporation($db, $id)
+{
     $sql = $db->prepare("SELECT * FROM corps WHERE id = :id");
     $sql->bindParam(':id', $id, PDO::PARAM_INT);
     $sql->execute();
     $row = $sql->fetch(PDO::FETCH_ASSOC);
-    return $row;
-
+    $table = "<table class='table'>" . PHP_EOL;
+    $table .= "<tr><td>";
+    $table .= $row['corp'];
+    $table .= "</td><td>";
+    $table .= $row['incorp_dt'];
+    $table .= "</td><td>";
+    $table .= $row['email'];
+    $table .= "</td><td>";
+    $table .= $row['zipcode'];
+    $table .= "</td><td>";
+    $table .= $row['owner'];
+    $table .= "</td><td>";
+    $table .= $row['phone'];
+    $table .= "</td></tr>";
+    $table .= "</table>" . PHP_EOL;
+    return $table;
 }
 
 ?>

@@ -1,3 +1,11 @@
+<br />
+<div class="center-align">
+    <form  method=\"POST\">
+<input type="submit" id="addcorps" name="addcorps" value="Add Company" />
+    </form>
+</div>
+    <br />
+<br />
 <?php
 /**
  * Created by PhpStorm.
@@ -7,12 +15,19 @@
  */
 $currentDay = date('Y\-m\-d');
 
-?>
+function insertAdd()
+{
 
-<form  method="POST" action="#">
-    First Name: <br /> <input type="text" name="firstname" value=""/> <br />
-    Last Name: <br/> <input type="text" name="lastname" value="" /> <br />
-    Date of Birth: <br/> <input type="text" name="dob" value=""/> <br />
-    Height: <br /> <input type="text" name="height" value="" /> <br />
-    <input type="submit" id="submitactors" name="action" value="Add" />
-</form>
+    $table = "<form  method=\"POST\" action=\"#\">";
+    $table .= "First Name: <br /> <input type='text' name='corp' value=''/> <br />";
+
+
+    $table .= "<input type=\"submit\" id=\"submitcorps\" name=\"action\" value=\"Add\" />";
+
+    return $table;
+}
+
+if(array_key_exists('addcorps',$_POST)){
+    insertAdd();
+}
+?>

@@ -17,4 +17,4 @@
     <nav></nav>
 </head>
 <body>
-<section>
+<section id="mainpage">
