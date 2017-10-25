@@ -15,10 +15,12 @@ function getCorporationsAsTable($db)
         $corps = $sql->fetchAll(PDO::FETCH_ASSOC);
         if ($sql->rowCount() > 0) {
             $table = "<table class='table'>" . PHP_EOL;
+            
             foreach ($corps as $corpor) {
                 $table .= "<tr><td>";
                 $table .= $corpor['corp'];
-                $table .= "</td><td><form action='#' method='post'><input type='hidden' name='id' value='" . $corpor['id'] . "' /><input type='submit' name='action' value='Read' /> </form>";
+                //$table .= "</td><td><form action='#' method='post'><input type='hidden' name='id' value='" . $corpor['id'] . "' /><input type='submit' name='action' value='Read' /> </form>";
+                $table .= "</td><td><a href='?action=Read&id=" . $corpor['id'] . "'>Read</a>";
                 $table .= "</td><td><form action='#' method='post'><input type='hidden' name='id' value='" . $corpor['id'] . "' /><input type='submit' name='action' value='Update' /> </form>";
                 $table .= "</td><td><form action='#' method='post'><input type='hidden' name='id' value='" . $corpor['id'] . "' /><input type='submit' name='action' value='Delete' /> </form>";
                 $table .= "</td></tr>";
@@ -60,6 +62,20 @@ function getCorporation($db, $id)
     $sql->execute();
     $row = $sql->fetch(PDO::FETCH_ASSOC);
     $table = "<table class='table'>" . PHP_EOL;
+    $table .= "<tr><th>";
+    $table .= "Corporation";
+    $table .= "</th><th>";
+    $table .= "Incorporation Date";
+    $table .= "</th><th>";
+    $table .= "Email";
+    $table .= "</th><th>";
+    $table .= "Zipcode";
+    $table .= "</th><th>";
+    $table .= "Owner";
+    $table .= "</th><th>";
+    $table .= "Phone Number";
+    $table .= "</th></tr>";
+
     $table .= "<tr><td>";
     $table .= $row['corp'];
     $table .= "</td><td>";

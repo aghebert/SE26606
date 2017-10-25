@@ -11,8 +11,8 @@ $db = dbConn();
 
 
 
-$action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) ?? "";
-$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT) ?? null;
+$action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING) ?? "";
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?? null;
 $corp = filter_input(INPUT_POST, 'corp', FILTER_SANITIZE_STRING) ?? "";
 $incorp_dt = filter_input(INPUT_POST, 'incorp_dt', FILTER_SANITIZE_STRING) ?? "";
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING) ?? "";
@@ -34,12 +34,14 @@ switch ($action) {
     case "Delete":
         break;
     case "Read":
-        header("location: assets/read_corp.php");
+
+        echo getCorporation($db, $id);
 
         break;
+    default:
+        echo getCorporationsAsTable($db);
 }
 
-echo getCorporationsAsTable($db);
 include_once("assets/corp_form.php");
 include_once("assets/footer.php");
 
