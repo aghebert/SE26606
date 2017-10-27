@@ -33,6 +33,9 @@ switch ($action) {
         break;
     case "Delete":
         break;
+        case "Update":
+
+        break;
     case "Read":
 
         echo getCorporation($db, $id);
