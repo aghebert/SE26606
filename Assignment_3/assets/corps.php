@@ -93,11 +93,10 @@ function getCorporation($db, $id)
     return $table;
 }
 
-function updateCorportation($db, $corp, $incorp_dt, $email, $zipcode, $owner, $phone){
+function updateCorportation($db, $id, $corp, $email, $zipcode, $owner, $phone){
     try {
         $sql = $db->prepare("UPDATE corps VALUES (null, :corp, :incorp_dt, :email, :zipcode, :owner, :phone) WHERE id=" . $id);
         $sql->bindParam(':corp', $corp);
-        $sql->bindParam(':incorp_dt', $incorp_dt);
         $sql->bindParam(':email', $email);
         $sql->bindParam(':zipcode', $zipcode);
         $sql->bindParam(':owner', $owner);
