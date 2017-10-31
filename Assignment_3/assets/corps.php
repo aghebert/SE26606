@@ -94,8 +94,10 @@ function getCorporation($db, $id)
 }
 
 function updateCorportation($db, $id, $corp, $email, $zipcode, $owner, $phone){
+    echo "$id, $corp, $email, $zipcode, $owner, $phone";
     try {
-        $sql = $db->prepare("UPDATE corps VALUES (null, :corp, :incorp_dt, :email, :zipcode, :owner, :phone) WHERE id=" . $id);
+        $sql = $db->prepare("UPDATE corps SET corp=:corp, email=:email, zipcode=:zipcode, owner=:owner, phone=:phone WHERE id=:id");
+        $sql->bindParam(':id', $id);
         $sql->bindParam(':corp', $corp);
         $sql->bindParam(':email', $email);
         $sql->bindParam(':zipcode', $zipcode);
@@ -105,9 +107,13 @@ function updateCorportation($db, $id, $corp, $email, $zipcode, $owner, $phone){
         $sql->execute();
         return $sql->rowCount();
     } catch (PDOException $e) {
+        echo "$id, $corp, $email, $zipcode, $owner, $phone";
         die("There was a problem updating this corporation");
+
     }
 
 }
+
+function deleteCorporation
 
 ?>
