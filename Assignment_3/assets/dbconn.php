@@ -6,6 +6,7 @@
  * Time: 8:45 AM
  */
 
+//connects to the database
 function dbConn(){
 $dsn = "mysql:host=localhost;dbname=PHPClassFall2017";
 $username = "root";

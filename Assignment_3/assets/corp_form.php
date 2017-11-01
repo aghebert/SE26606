@@ -20,20 +20,16 @@ function addHTML()
     $table = "<form  method=\"POST\" action=\"#\">" . PHP_EOL;
 
     $table .= "<br />";
-
     $table .= "Corporation: <br /> <input type=\"text\" name=\"corp\" value=\"\"/> <br />";
     $table .= "Email: <br /> <input type=\"text\" name=\"email\" value=\"\"/> <br />";
     $table .= "Zipcode: <br /> <input type=\"text\" name=\"zipcode\" value=\"\"/> <br />";
     $table .= "Owner: <br /> <input type=\"text\" name=\"owner\" value=\"\"/> <br />";
     $table .= "Phone: <br /> <input type=\"text\" name=\"phone\" value=\"\"/> <br />";
 
-    $table .= "<br /><input type=\"submit\" class='button' name=\"action\" value=\"Add Corporation\" /> <br />";
+    $table .= "<br /><input type=\"submit\" class='button' name=\"action\" value=\"Submit Company\" /> <br />";
 
     $table .= "<br />";
 
-    $table .= "<br /><input type=\"submit\" class='button' name=\"action\" value=\"Go Back\" /> <br />";
-
-    $table .= "<br />";
 
     $table .= "</form>" . PHP_EOL;
 
@@ -63,15 +59,18 @@ function updateHTML($db, $id)
 
     $table .= "<br />";
 
-    $table .= "<br /><input type=\"submit\" class='button' name=\"action\" value=\"Go Back\" /> <br />";
-
-    $table .= "<br />";
-
     $table .= "</form>" . PHP_EOL;
 
 
     return $table;
 }
 
-
+function goBackIndex()
+{$table = "<br />";
+    $table .= "<form  method=\"GET\" action=\"#\">" . PHP_EOL;
+    $table .= "<br /><input type=\"submit\" class='button' name=\"action\" value=\"Go Back\" /> <br />";
+    $table .= "</form>" . PHP_EOL;
+    $table .= "<br />";
+    return $table;
+}
 ?>
