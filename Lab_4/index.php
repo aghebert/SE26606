@@ -19,7 +19,7 @@ $zipcode = filter_input(INPUT_POST, 'zipcode', FILTER_SANITIZE_STRING) ?? "";
 $owner = filter_input(INPUT_POST, 'owner', FILTER_SANITIZE_STRING) ?? "";
 $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING) ?? "";
 
-
+echo addSort();
 //switch case based on buttons pushed, will do different things
 switch ($action) {
     case "Add Company":

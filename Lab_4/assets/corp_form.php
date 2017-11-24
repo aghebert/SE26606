@@ -9,25 +9,25 @@
 $currentDay = date('Y\-m\-d');
 
 function addSort(){
-$table=     "<form method=\"get\" action=\"/calexande/public_html/lab4correct/index.php\">";
-$table+= <label for="col">Sort Column: </label>;
-$table+= 	<select name="col" id="col">;
-$table+= 		<option value="id">id</option>;
-$table+= 		<option value="corp">corp</option>;
-$table+= 		<option value="incorp_dt">incorp_dt</option>;
-$table+= 		<option value="email">email</option>;
-$table+= 		<option value="zipcode">zipcode</option>;
-$table+= 		<option value="owner">owner</option>;
-$table+= 		<option value="phone">phone</option>;
-$table+= 	</select>;
-$table+= <label for="asc">Ascending: </label>;
-$table+= <input type="radio" name="dir" value="ASC" id="asc">;
-$table+= <label for="desc">Descending: </label>;
-$table+= <input type="radio" name="dir" value="DESC" id="desc">;
-$table+= <input type="hidden" name="action" value="sort">;
-$table+= <input type="submit">;
-$table+= <input type="submit" name="action" value="Reset">;
-$table+= </form>;
+$table=     "<form method=\"get\" action=\"../index.php\">";
+$table.= "<label for=\"col\">Sort Column: </label>";
+$table.= 	"<select name=\"col\" id=\"col\">";
+$table.= 		"<option value=\"id\">id</option>";
+$table.= 		"<option value=\"corp\">corp</option>";
+$table.= 		"<option value=\"incorp_dt\">incorp_dt</option>";
+$table.= 		"<option value=\"email\">email</option>";
+$table.= 		"<option value=\"zipcode\">zipcode</option>";
+$table.= 		"<option value=\"owner\">owner</option>";
+$table.= 		"<option value=\"phone\">phone</option>";
+$table.= 	"</select>";
+$table.= "<label for=\"asc\">Ascending: </label>";
+$table.= "<input type=\"radio\" name=\"dir\" value=\"ASC\" id=\"asc\">";
+$table.= "<label for=\"desc\">Descending: </label>";
+$table.= "<input type=\"radio\" name=\"dir\" value=\"DESC\" id=\"desc\">";
+$table.= "<input type=\"hidden\" name=\"action\" value=\"sort\">";
+$table.= "<input type=\"submit\">";
+$table.= "<input type=\"submit\" name=\"action\" value=\"Reset\">";
+$table.= "</form>";
     return $table;
 }
 
